@@ -16,15 +16,16 @@ export async function getCurrencies() {
   if (obj) {
     const currentTime = Date.now()
     const timeDiff = currentTime - new Date(obj.timestamp).getTime()
-    const timeDiffHours = timeDiff / (1000 * 60 * 60)
+    const timeDiffHours = timeDiff / (1000 * 60)
 
-    if (timeDiffHours < 2) {
+    if (timeDiffHours < 30) {
       return obj
     }
   }
 
   // Если данных нет или они устарели, делаем запрос
   try {
+    console.log('Данные устарели, делаю новый запрос!')
     const res = await fetch(CURRENCY_RATES_LINK)
     const currencies = await res.json()
 

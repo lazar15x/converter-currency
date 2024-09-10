@@ -3,14 +3,15 @@ import { ref, computed, onMounted } from 'vue'
 import { getCurrencyByLocale } from './services/getCurrencyByLocale'
 import { convertCurrency } from './utils/convertCurrency'
 import { getCurrencies } from './services/getCurrencies'
-import { BASE_CURRENCY_FROM_API } from './const'
+import { BASE_CURRENCY_FROM_API, DEFAULT_CURRENCY } from './const'
+
 import CurrencySelect from './components/CurrencySelector.vue'
 import CurrencyResult from './components/CurrencyResult.vue'
 import CurrencyInput from './components/CurrencyInput.vue'
 
 const rates = ref(null) // Список всех валют
 const currentAmount = ref('1') // Сумма для конвертации
-const fromCurrency = ref('USD') // Базовая валюта
+const fromCurrency = ref(DEFAULT_CURRENCY) // Базовая валюта
 const toCurrency = ref('none') // Целевая валюта
 
 const convertedAmount = computed(() => {

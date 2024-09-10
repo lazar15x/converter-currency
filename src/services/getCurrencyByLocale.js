@@ -6,9 +6,7 @@ export async function getCurrencyByLocale() {
     const res = await fetch(IPAPI_LINK)
     const currencyByLocale = await res.text()
 
-    if (!res.ok) {
-      console.warn('Ошибка при запросе локальной валюты', res.text, res.statusText)
-    }
+    if (!res.ok) console.warn('Ошибка при запросе локальной валюты')
 
     return currencyByLocale || DEFAULT_CURRENCY
   } catch (error) {

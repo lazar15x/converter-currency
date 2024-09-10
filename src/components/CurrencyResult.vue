@@ -4,7 +4,7 @@
 
 <script setup>
 defineProps({
-  convertedAmount: String
+  convertedAmount: [String, Number]
 })
 </script>
 
